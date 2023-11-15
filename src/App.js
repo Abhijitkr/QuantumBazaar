@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/checkout",
     element: <Checkout></Checkout>,
+  },
+  {
+    path: "/product-detail",
+    element: <ProductDetailPage></ProductDetailPage>,
   },
 ]);
 
