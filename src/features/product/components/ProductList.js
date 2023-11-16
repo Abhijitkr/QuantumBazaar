@@ -1,7 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchAllProductsAsync, selectAllProducts } from "../productSlice";
+import {
+  fetchAllProductsAsync,
+  selectAllProducts,
+  fetchProducByFiltersAsync,
+} from "../productSlice";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {
@@ -198,6 +202,14 @@ export default function ProductList() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const products = useSelector(selectAllProducts);
   const dispatch = useDispatch();
+  const [filter, setFilter] = useState({});
+
+  const handleFilter = (e, section, option) => {
+    const newFilter = { ...filter, [section.id]: option.value };
+    setFilter(newFilter);
+    dispatch(fetchProducByFiltersAsync(newFilter));
+    console.log(newFilter);
+  };
 
   useEffect(() => {
     dispatch(fetchAllProductsAsync());
@@ -436,6 +448,9 @@ export default function ProductList() {
                                     defaultValue={option.value}
                                     type="checkbox"
                                     defaultChecked={option.checked}
+                                    onChange={(e) =>
+                                      handleFilter(e, section, option)
+                                    }
                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                   />
                                   <label
