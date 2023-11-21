@@ -6,7 +6,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 
 import * as React from "react";
 import { useEffect } from "react";
-import * as ReactDOM from "react-dom/client";
+// import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import CartPage from "./pages/CartPage";
