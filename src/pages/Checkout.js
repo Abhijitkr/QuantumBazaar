@@ -11,7 +11,7 @@ import {
   updateUserAsync,
 } from "../features/auth/authSlice";
 import { useState } from "react";
-import { createOrdeAsync } from "../features/order/orderSlice";
+import { createOrderAsync } from "../features/order/orderSlice";
 
 function Checkout() {
   const user = useSelector(selectLoggedInUser);
@@ -62,7 +62,7 @@ function Checkout() {
       totalAmount,
       totalItems,
     };
-    dispatch(createOrdeAsync(order));
+    dispatch(createOrderAsync(order));
   };
 
   return (

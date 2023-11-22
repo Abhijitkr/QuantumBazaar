@@ -48,7 +48,9 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ]
     },
     {
       "id": 4,
@@ -1426,7 +1428,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/78/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/78/thumbnail.jpg"
+      ]
     },
     {
       "id": 79,
@@ -1439,7 +1443,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/79/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/79/1.jpg"
+      ]
     },
     {
       "id": 80,
@@ -2402,5 +2408,68 @@
       "id": 6
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/2/1.jpg",
+            "https://i.dummyjson.com/data/products/2/2.jpg",
+            "https://i.dummyjson.com/data/products/2/3.jpg",
+            "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 1,
+          "id": 6
+        }
+      ],
+      "user": {
+        "email": "test@gmail.com",
+        "password": "Test@123",
+        "addresses": [
+          {
+            "name": "TEstubg ",
+            "email": "gahahah",
+            "phone": "ju",
+            "street": "guyyvy",
+            "city": "vvviub",
+            "state": "buuvub",
+            "pinCode": "bvhv"
+          },
+          {
+            "name": "ehhahguH",
+            "email": "GGUANGN",
+            "phone": "GAJGNAGN",
+            "street": "ngnagnn",
+            "city": "gnqngkgnagn",
+            "state": "ngwnggno",
+            "pinCode": "ngjnemgajnga"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "ehhahguH",
+        "email": "GGUANGN",
+        "phone": "GAJGNAGN",
+        "street": "ngnagnn",
+        "city": "gnqngkgnagn",
+        "state": "ngwnggno",
+        "pinCode": "ngjnemgajnga"
+      },
+      "totalAmount": 899,
+      "totalItems": 1,
+      "id": 1
+    }
+  ]
 }

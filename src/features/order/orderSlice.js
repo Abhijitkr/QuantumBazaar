@@ -6,7 +6,7 @@ const initialState = {
   status: "idle",
 };
 
-export const createOrdeAsync = createAsyncThunk(
+export const createOrderAsync = createAsyncThunk(
   "order/createOrder",
   async (order) => {
     const response = await createOrder(order);
@@ -16,7 +16,7 @@ export const createOrdeAsync = createAsyncThunk(
 );
 
 export const counterSlice = createSlice({
-  name: "counter",
+  name: "order",
   initialState,
   reducers: {
     increment: (state) => {
@@ -25,12 +25,12 @@ export const counterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createOrdeAsync.pending, (state) => {
+      .addCase(createOrderAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(createOrdeAsync.fulfilled, (state, action) => {
+      .addCase(createOrderAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.value.push(action.payload);
+        state.orders.push(action.payload);
       });
   },
 });
