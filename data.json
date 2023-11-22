@@ -2338,36 +2338,36 @@
     {
       "email": "test@gmail.com",
       "password": "Test@123",
+      "addresses": [
+        {
+          "name": "TEstubg ",
+          "email": "gahahah",
+          "phone": "ju",
+          "street": "guyyvy",
+          "city": "vvviub",
+          "state": "buuvub",
+          "pinCode": "bvhv"
+        },
+        {
+          "name": "ehhahguH",
+          "email": "GGUANGN",
+          "phone": "GAJGNAGN",
+          "street": "ngnagnn",
+          "city": "gnqngkgnagn",
+          "state": "ngwnggno",
+          "pinCode": "ngjnemgajnga"
+        }
+      ],
       "id": 1
     },
     {
       "email": "demo@gmail.com",
       "password": "Demo@123",
+      "addresses": [],
       "id": 2
     }
   ],
   "cart": [
-    {
-      "id": 4,
-      "title": "OPPOF19",
-      "description": "OPPO F19 is officially announced on April 2021.",
-      "price": 280,
-      "discountPercentage": 17.91,
-      "rating": 4.3,
-      "stock": 123,
-      "brand": "OPPO",
-      "category": "smartphones",
-      "thumbnail": "https://i.dummyjson.com/data/products/4/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/4/1.jpg",
-        "https://i.dummyjson.com/data/products/4/2.jpg",
-        "https://i.dummyjson.com/data/products/4/3.jpg",
-        "https://i.dummyjson.com/data/products/4/4.jpg",
-        "https://i.dummyjson.com/data/products/4/thumbnail.jpg"
-      ],
-      "quantity": 2,
-      "user": 1
-    },
     {
       "id": 5,
       "title": "Huawei P30",
@@ -2386,6 +2386,26 @@
       ],
       "quantity": 1,
       "user": 2
+    },
+    {
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 899,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/2/1.jpg",
+        "https://i.dummyjson.com/data/products/2/2.jpg",
+        "https://i.dummyjson.com/data/products/2/3.jpg",
+        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": 1,
+      "id": 6
     }
   ]
 }
