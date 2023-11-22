@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchCount } from "./orderAPI";
+import { createOrder, fetchCount } from "./orderAPI";
 
 const initialState = {
-  value: 0,
+  orders: [],
   status: "idle",
 };
 
-export const incrementAsync = createAsyncThunk(
-  "counter/fetchCount",
-  async (amount) => {
-    const response = await fetchCount(amount);
+export const createOrdeAsync = createAsyncThunk(
+  "order/createOrder",
+  async (order) => {
+    const response = await createOrder(order);
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -25,12 +25,12 @@ export const counterSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, (state) => {
+      .addCase(createOrdeAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(incrementAsync.fulfilled, (state, action) => {
+      .addCase(createOrdeAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.value += action.payload;
+        state.value.push(action.payload);
       });
   },
 });
