@@ -281,11 +281,11 @@ function Checkout() {
                             value={index}
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
-                          <img
+                          {/* <img
                             className="h-12 w-12 flex-none rounded-full bg-gray-50"
                             src={address.imageUrl}
                             alt=""
-                          />
+                          /> */}
                           <div className="min-w-0 flex-auto">
                             <p className="text-sm font-semibold leading-6 text-gray-900">
                               {address.name}
