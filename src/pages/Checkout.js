@@ -11,10 +11,16 @@ import {
   updateUserAsync,
 } from "../features/auth/authSlice";
 import { useState } from "react";
-import { createOrderAsync } from "../features/order/orderSlice";
+import {
+  createOrderAsync,
+  selectCurrentOrder,
+} from "../features/order/orderSlice";
 
 function Checkout() {
   const user = useSelector(selectLoggedInUser);
+  const items = useSelector(selectItems);
+  const currentOrder = useSelector(selectCurrentOrder);
+  const dispatch = useDispatch();
 
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("cash");
@@ -26,9 +32,6 @@ function Checkout() {
     formState: { errors },
   } = useForm();
 
-  const dispatch = useDispatch();
-
-  const items = useSelector(selectItems);
   const totalAmount = items.reduce(
     (amount, item) => item.price * item.quantity + amount,
     0
@@ -61,6 +64,7 @@ function Checkout() {
       selectedAddress,
       totalAmount,
       totalItems,
+      status: "pending",
     };
     dispatch(createOrderAsync(order));
   };
@@ -68,6 +72,12 @@ function Checkout() {
   return (
     <>
       {!items.length && <Navigate to="/" replace={true}></Navigate>}
+      {currentOrder && (
+        <Navigate
+          to={`/order-success/${currentOrder.id}`}
+          replace={true}
+        ></Navigate>
+      )}
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
