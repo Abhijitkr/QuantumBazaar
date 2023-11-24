@@ -13,7 +13,7 @@ export default function UserOrders() {
 
   useEffect(() => {
     dispatch(fetchLoggedInUserOrderAsync(user.id));
-  }, [dispatch, user]);
+  }, []);
 
   return (
     <>

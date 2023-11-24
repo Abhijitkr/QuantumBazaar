@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectUserInfo } from "../userSlice";
+import { selectUserInfo, updateUserAsync } from "../userSlice";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
   const user = useSelector(selectUserInfo);
+
   const handleEdit = () => {};
-  const handleRemove = () => {};
+  const handleRemove = (e, index) => {
+    const newUser = { ...user, addresses: [user.addresses] };
+    newUser.addresses.splice(index, 1);
+    dispatch(updateUserAsync(newUser));
+  };
+
   return (
     <div>
       <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
