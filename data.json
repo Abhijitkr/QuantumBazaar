@@ -2346,7 +2346,7 @@
           "street": "guyyvy",
           "city": "vvviub",
           "state": "buuvub",
-          "pinCode": "bvhv"
+          "pincode": "773737"
         },
         {
           "name": "ehhahguH",
@@ -2355,7 +2355,7 @@
           "street": "ngnagnn",
           "city": "gnqngkgnagn",
           "state": "ngwnggno",
-          "pinCode": "ngjnemgajnga"
+          "pincode": "737373"
         }
       ],
       "id": 1
@@ -2371,13 +2371,51 @@
           "street": "Demonster Street",
           "city": "Demoed",
           "state": "Demoist",
-          "pinCode": "52266"
+          "pincode": "52266"
         }
       ],
       "id": 2
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+      "price": 1249,
+      "discountPercentage": 15.46,
+      "rating": 4.09,
+      "stock": 36,
+      "brand": "Samsung",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ],
+      "quantity": 1,
+      "user": 2,
+      "id": 1
+    },
+    {
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 899,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/2/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/2/1.jpg",
+        "https://i.dummyjson.com/data/products/2/2.jpg",
+        "https://i.dummyjson.com/data/products/2/3.jpg",
+        "https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": 1,
+      "id": 2
+    }
+  ],
   "orders": [
     {
       "items": [
@@ -2414,7 +2452,7 @@
             "street": "guyyvy",
             "city": "vvviub",
             "state": "buuvub",
-            "pinCode": "bvhv"
+            "pincode": "bvhv"
           },
           {
             "name": "ehhahguH",
@@ -2423,7 +2461,7 @@
             "street": "ngnagnn",
             "city": "gnqngkgnagn",
             "state": "ngwnggno",
-            "pinCode": "ngjnemgajnga"
+            "pincode": "ngjnemgajnga"
           }
         ],
         "id": 1
@@ -2436,7 +2474,7 @@
         "street": "guyyvy",
         "city": "vvviub",
         "state": "buuvub",
-        "pinCode": "bvhv"
+        "pincode": "bvhv"
       },
       "totalAmount": 549,
       "totalItems": 1,
@@ -2476,7 +2514,7 @@
             "street": "Demonster Street",
             "city": "Demoed",
             "state": "Demoist",
-            "pinCode": "52266"
+            "pincode": "52266"
           }
         ],
         "id": 2
@@ -2489,7 +2527,7 @@
         "street": "Demonster Street",
         "city": "Demoed",
         "state": "Demoist",
-        "pinCode": "52266"
+        "pincode": "52266"
       },
       "totalAmount": 499,
       "totalItems": 1,
