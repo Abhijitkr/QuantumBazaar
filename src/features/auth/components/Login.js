@@ -125,7 +125,7 @@ export default function Login() {
               Create an Account
             </Link>
           </p>
-          <button
+          {/* <button
             onClick={(e) =>
               dispatch(
                 checkUserAsync({
@@ -137,7 +137,7 @@ export default function Login() {
             className="flex w-full my-10 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Guest Login
-          </button>
+          </button> */}
         </div>
       </div>
     </>
