@@ -1,13 +1,7 @@
-import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  checkUserAsync,
-  increment,
-  incrementAsync,
-  selectError,
-  selectLoggedInUser,
-} from "../authSlice";
+import { selectError, selectLoggedInUser } from "../authSlice";
 import { Link, Navigate } from "react-router-dom";
+import { checkUserAsync } from "../authSlice";
 import { useForm } from "react-hook-form";
 
 export default function Login() {
@@ -40,12 +34,12 @@ export default function Login() {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form
             noValidate
-            className="space-y-6"
             onSubmit={handleSubmit((data) => {
               dispatch(
                 checkUserAsync({ email: data.email, password: data.password })
               );
             })}
+            className="space-y-6"
           >
             <div>
               <label
@@ -58,10 +52,10 @@ export default function Login() {
                 <input
                   id="email"
                   {...register("email", {
-                    required: "Email is required!",
+                    required: "email is required",
                     pattern: {
                       value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
-                      message: "Email is not valid!",
+                      message: "email not valid",
                     },
                   })}
                   type="email"
@@ -69,7 +63,7 @@ export default function Login() {
                 />
                 {errors.email && (
                   <p className="text-red-500">{errors.email.message}</p>
-                )}{" "}
+                )}
               </div>
             </div>
 
@@ -94,16 +88,16 @@ export default function Login() {
                 <input
                   id="password"
                   {...register("password", {
-                    required: "Password is required!",
+                    required: "password is required",
                   })}
                   type="password"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
                 {errors.password && (
                   <p className="text-red-500">{errors.password.message}</p>
-                )}{" "}
-                {error && <p className="text-red-500">{error.message}</p>}{" "}
+                )}
               </div>
+              {error && <p className="text-red-500">{error.message}</p>}
             </div>
 
             <div>
@@ -117,7 +111,7 @@ export default function Login() {
           </form>
 
           <p className="mt-10 text-center text-sm text-gray-500">
-            Not a member?
+            Not a member?{" "}
             <Link
               to="/signup"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
@@ -125,19 +119,6 @@ export default function Login() {
               Create an Account
             </Link>
           </p>
-          {/* <button
-            onClick={(e) =>
-              dispatch(
-                checkUserAsync({
-                  email: "new@gmail.com",
-                  password: "New@1234",
-                })
-              )
-            }
-            className="flex w-full my-10 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Guest Login
-          </button> */}
         </div>
       </div>
     </>

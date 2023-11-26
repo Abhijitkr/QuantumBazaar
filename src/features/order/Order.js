@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, incrementAsync, selectCount } from "./counterSlice";
+import {} from "./orderSlice";
 
-export default function createOrder() {
-  // const dispatch = useDispatch();
+export default function Order() {
+  const dispatch = useDispatch();
 
-  return <div></div>;
+  return (
+    <div>
+      <div>{/* We will use to show orders on Admin Page */}</div>
+    </div>
+  );
 }

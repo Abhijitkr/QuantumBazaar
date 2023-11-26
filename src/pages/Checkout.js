@@ -252,7 +252,7 @@ function Checkout() {
 
                     <div className="sm:col-span-2">
                       <label
-                        htmlFor="pincode"
+                        htmlFor="pinCode"
                         className="block text-sm font-medium leading-6 text-gray-900"
                       >
                         ZIP / Postal code
@@ -260,15 +260,15 @@ function Checkout() {
                       <div className="mt-2">
                         <input
                           type="text"
-                          {...register("pincode", {
-                            required: "pincode is required",
+                          {...register("pinCode", {
+                            required: "pinCode is required",
                           })}
-                          id="pincode"
+                          id="pinCode"
                           className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
-                        {errors.pincode && (
+                        {errors.pinCode && (
                           <p className="text-red-500">
-                            {errors.pincode.message}
+                            {errors.pinCode.message}
                           </p>
                         )}
                       </div>
@@ -293,14 +293,14 @@ function Checkout() {
                 </div>
               </div>
             </form>
-            <div className="border-b px-5 bg-white border-gray-900/10 pb-12">
+            <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-gray-900">
                 Addresses
               </h2>
               <p className="mt-1 text-sm leading-6 text-gray-600">
                 Choose from Existing addresses
               </p>
-              <ul role="list">
+              <ul>
                 {user.addresses.map((address, index) => (
                   <li
                     key={index}
@@ -322,7 +322,7 @@ function Checkout() {
                           {address.street}
                         </p>
                         <p className="mt-1 truncate text-xs leading-5 text-gray-500">
-                          {address.pincode}
+                          {address.pinCode}
                         </p>
                       </div>
                     </div>
