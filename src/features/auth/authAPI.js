@@ -30,3 +30,9 @@ export function checkUser(LoginInfo) {
     resolve({ data });
   });
 }
+
+export function signOut(userId) {
+  return new Promise(async (resolve) => {
+    resolve({ data: "success" });
+  });
+}
