@@ -520,6 +520,11 @@ function ProductGrid({ products }) {
                       </p>
                     </div>
                   </div>
+                  {product.deleted && (
+                    <div>
+                      <p className="txt-sm text-red-400">Product Deleted</p>
+                    </div>
+                  )}
                 </div>
               </Link>
               <div>

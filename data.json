@@ -1843,9 +1843,9 @@
       "description": "It flies",
       "brand": "Apple",
       "category": "smartphones",
-      "price": "4434",
-      "discountPercentage": "5",
-      "stock": "26",
+      "price": 4434,
+      "discountPercentage": 5,
+      "stock": 26,
       "thumbnail": "https://www.top10gadgets.shop/wp-content/uploads/2020/03/cool-gadgets.jpg",
       "images": [
         "https://www.top10gadgets.shop/wp-content/uploads/2020/03/cool-gadgets.jpg",
@@ -1854,7 +1854,8 @@
         "https://www.top10gadgets.shop/wp-content/uploads/2020/03/cool-gadgets.jpg"
       ],
       "rating": 0,
-      "id": 101
+      "id": 101,
+      "deleted": true
     }
   ],
   "categories": [
