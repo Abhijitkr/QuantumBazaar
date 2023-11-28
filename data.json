@@ -48,7 +48,9 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ]
     },
     {
       "id": 4,
@@ -1426,7 +1428,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/78/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/78/thumbnail.jpg"
+      ]
     },
     {
       "id": 79,
@@ -1439,7 +1443,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/79/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/79/1.jpg"
+      ]
     },
     {
       "id": 80,
@@ -1832,6 +1838,24 @@
         "https://i.dummyjson.com/data/products/100/3.jpg",
         "https://i.dummyjson.com/data/products/100/thumbnail.jpg"
       ]
+    },
+    {
+      "title": "Cool Product",
+      "description": "It flies",
+      "brand": "Apple",
+      "category": "smartphones",
+      "price": "4434",
+      "discountPercentage": "5",
+      "stock": "26",
+      "thumbnail": "https://www.top10gadgets.shop/wp-content/uploads/2020/03/cool-gadgets.jpg",
+      "images": [
+        "https://www.top10gadgets.shop/wp-content/uploads/2020/03/cool-gadgets.jpg",
+        "https://www.top10gadgets.shop/wp-content/uploads/2020/03/cool-gadgets.jpg",
+        "https://www.top10gadgets.shop/wp-content/uploads/2020/03/cool-gadgets.jpg",
+        "https://www.top10gadgets.shop/wp-content/uploads/2020/03/cool-gadgets.jpg"
+      ],
+      "rating": 0,
+      "id": 101
     }
   ],
   "categories": [
@@ -2448,7 +2472,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 2,
           "user": 1,
           "id": 2

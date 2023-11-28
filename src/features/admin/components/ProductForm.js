@@ -1,6 +1,10 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
-import { selectBrands, selectCategories } from "../../product/productSlice";
+import {
+  createProductAsync,
+  selectBrands,
+  selectCategories,
+} from "../../product/productSlice";
 import { useForm } from "react-hook-form";
 
 function ProductForm() {
@@ -31,8 +35,7 @@ function ProductForm() {
         delete product["image3"];
         console.log(product);
 
-        // dispatch(
-        // );
+        dispatch(createProductAsync(product));
       })}
     >
       <div className="space-y-12 bg-white p-12">
