@@ -1,22 +1,56 @@
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearSelectedProduct,
   createProductAsync,
+  fetchProductByIdAsync,
   selectBrands,
   selectCategories,
+  selectProductById,
+  updateProductAsync,
 } from "../../product/productSlice";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function ProductForm() {
   const brands = useSelector(selectBrands);
   const categories = useSelector(selectCategories);
   const dispatch = useDispatch();
+  const params = useParams();
+  const selectedProduct = useSelector(selectProductById);
 
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    if (params.id) {
+      dispatch(fetchProductByIdAsync(params.id));
+    } else {
+      dispatch(clearSelectedProduct());
+    }
+  }, [dispatch, params.id]);
+
+  useEffect(() => {
+    if (selectedProduct && params.id) {
+      setValue("title", selectedProduct.title);
+      setValue("description", selectedProduct.description);
+      setValue("price", selectedProduct.price);
+      setValue("discountPercentage", selectedProduct.discountPercentage);
+      setValue("thumbnail", selectedProduct.thumbnail);
+      setValue("stock", selectedProduct.stock);
+      setValue("image1", selectedProduct.images[0]);
+      setValue("image2", selectedProduct.images[1]);
+      setValue("image3", selectedProduct.images[2]);
+      setValue("brand", selectedProduct.brand);
+      setValue("category", selectedProduct.category);
+    }
+  }, [dispatch, params.id, selectedProduct]);
 
   return (
     <form
@@ -33,9 +67,19 @@ function ProductForm() {
         delete product["image1"];
         delete product["image2"];
         delete product["image3"];
+        product.price = +product.price;
+        product.discountPercentage = +product.discountPercentage;
+        product.stock = +product.stock;
         console.log(product);
-
-        dispatch(createProductAsync(product));
+        if (params.id) {
+          product.id = params.id;
+          product.rating = selectedProduct.rating || 0;
+          dispatch(updateProductAsync(product));
+          reset();
+        } else {
+          dispatch(createProductAsync(product));
+          reset();
+        }
       })}
     >
       <div className="space-y-12 bg-white p-12">
