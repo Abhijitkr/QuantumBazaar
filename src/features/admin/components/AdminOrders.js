@@ -5,6 +5,7 @@ import {
   fetchAllOrdersAsync,
   selectOrders,
   selectTotalOrders,
+  updateOrderAsync,
 } from "../../order/orderSlice";
 import { PencilIcon, EyeIcon } from "@heroicons/react/24/outline";
 
@@ -14,12 +15,20 @@ function AdminOrders() {
   const orders = useSelector(selectOrders);
   const totalOrders = useSelector(selectTotalOrders);
 
-  const handleEdit = () => {
-    console.log("handle edit");
+  const [editableOrderId, setEditableOrderId] = useState(-1);
+
+  const handleEdit = (order) => {
+    setEditableOrderId(order.id);
   };
 
   const handleShow = () => {
     console.log("handle show");
+  };
+
+  const handleUpdate = (e, order) => {
+    const updatedOrder = { ...order, status: e.target.value };
+    dispatch(updateOrderAsync(updatedOrder));
+    setEditableOrderId(-1);
   };
 
   useEffect(() => {
@@ -87,9 +96,18 @@ function AdminOrders() {
                     </td>
 
                     <td className="py-3 px-6 text-center">
-                      <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
-                        {order.status}
-                      </span>
+                      {order.id === editableOrderId ? (
+                        <select onChange={(e) => handleUpdate(e, order)}>
+                          <option value="pending">Pending</option>
+                          <option value="dispatched">Dispatched</option>
+                          <option value="delivered">Delivered</option>
+                          <option value="cancelled">Cancelled</option>
+                        </select>
+                      ) : (
+                        <span className="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
+                          {order.status}
+                        </span>
+                      )}
                     </td>
                     <td className="py-3 px-6 text-center">
                       <div className="flex item-center justify-center">

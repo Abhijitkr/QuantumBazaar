@@ -2467,7 +2467,7 @@
         "phone": "9827836",
         "street": "Newzeland"
       },
-      "status": "pending",
+      "status": "dispatched",
       "id": 1
     },
     {
@@ -2547,7 +2547,7 @@
         "state": "ngknwgkn",
         "pinCode": "34252352"
       },
-      "status": "pending",
+      "status": "delivered",
       "id": 2
     },
     {
