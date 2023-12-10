@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ITEMS_PER_PAGE } from "../../../app/constants";
+import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchAllOrdersAsync,
@@ -13,6 +13,14 @@ function AdminOrders() {
   const dispatch = useDispatch();
   const orders = useSelector(selectOrders);
   const totalOrders = useSelector(selectTotalOrders);
+
+  const handleEdit = () => {
+    console.log("handle edit");
+  };
+
+  const handleShow = () => {
+    console.log("handle show");
+  };
 
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
@@ -54,7 +62,8 @@ function AdminOrders() {
                             />
                           </div>
                           <span>
-                            {item.title} - #{item.quantity} - ${item.price}
+                            {item.title} - #{item.quantity} - $
+                            {discountedPrice(item)}
                           </span>
                         </div>
                       ))}
@@ -85,10 +94,16 @@ function AdminOrders() {
                     <td className="py-3 px-6 text-center">
                       <div className="flex item-center justify-center">
                         <div className="w-6 mr-4 transform hover:text-purple-500 hover:scale-110">
-                          <EyeIcon className="w-5 h-5"></EyeIcon>
+                          <EyeIcon
+                            className="w-5 h-5"
+                            onClick={(e) => handleShow(order)}
+                          ></EyeIcon>
                         </div>
                         <div className="w-6 mr-2 transform hover:text-purple-500 hover:scale-110">
-                          <PencilIcon className="w-5 h-5"></PencilIcon>
+                          <PencilIcon
+                            className="w-5 h-5"
+                            onClick={(e) => handleEdit(order)}
+                          ></PencilIcon>
                         </div>
                       </div>
                     </td>

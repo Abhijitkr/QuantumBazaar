@@ -2659,6 +2659,62 @@
       },
       "status": "pending",
       "id": 4
+    },
+    {
+      "items": [
+        {
+          "title": "Microsoft Surface Laptop 4",
+          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+          "price": 1499,
+          "discountPercentage": 10.23,
+          "rating": 4.43,
+          "stock": 68,
+          "brand": "Microsoft Surface",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/8/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/8/1.jpg",
+            "https://i.dummyjson.com/data/products/8/2.jpg",
+            "https://i.dummyjson.com/data/products/8/3.jpg",
+            "https://i.dummyjson.com/data/products/8/4.jpg",
+            "https://i.dummyjson.com/data/products/8/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 3,
+          "id": 1
+        }
+      ],
+      "totalAmount": 1346,
+      "totalItems": 1,
+      "user": {
+        "email": "admin@gmail.com",
+        "password": "Admin@123",
+        "addresses": [
+          {
+            "name": "Admin",
+            "email": "admin@gmail.com",
+            "phone": "875827527",
+            "street": "43",
+            "city": "Hyd",
+            "state": "Karnataka",
+            "pinCode": "87449"
+          }
+        ],
+        "role": "admin",
+        "id": 3
+      },
+      "paymentMethod": "card",
+      "selectedAddress": {
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "phone": "875827527",
+        "street": "43",
+        "city": "Hyd",
+        "state": "Karnataka",
+        "pinCode": "87449"
+      },
+      "status": "pending",
+      "id": 5
     }
   ]
 }
