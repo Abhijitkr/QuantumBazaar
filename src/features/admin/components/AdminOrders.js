@@ -8,6 +8,7 @@ import {
   updateOrderAsync,
 } from "../../order/orderSlice";
 import { PencilIcon, EyeIcon } from "@heroicons/react/24/outline";
+import Pagination from "../../common/pagination";
 
 function AdminOrders() {
   const [page, setPage] = useState(1);
@@ -44,6 +45,12 @@ function AdminOrders() {
       default:
         return "bg-purple-200 text-purple-600";
     }
+  };
+
+  const handlePage = (page) => {
+    setPage(page);
+    const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
+    dispatch(fetchAllOrdersAsync(pagination));
   };
 
   useEffect(() => {
@@ -151,6 +158,12 @@ function AdminOrders() {
           </div>
         </div>
       </div>
+      <Pagination
+        page={page}
+        setPage={setPage}
+        handlePage={handlePage}
+        totalItems={totalOrders}
+      ></Pagination>
     </div>
   );
 }
