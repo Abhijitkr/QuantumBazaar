@@ -25,7 +25,7 @@ import {
   Squares2X2Icon,
 } from "@heroicons/react/20/solid";
 import { ITEMS_PER_PAGE, discountedPrice } from "../../../app/constants";
-import Pagination from "../../common/pagination";
+import Pagination from "../../common/Pagination";
 
 const sortOptions = [
   { name: "Best Rating", sort: "rating", order: "desc", current: false },
