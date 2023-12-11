@@ -42,7 +42,7 @@ function NavBar({ children }) {
                       <Link to="/">
                         <img
                           className="h-8 w-8"
-                          src="/QbIcon.png"
+                          src="/QBIcon.png"
                           alt="Your Company"
                         />
                       </Link>
