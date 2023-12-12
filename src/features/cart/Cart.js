@@ -2,15 +2,18 @@ import { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   deleteItemFromCartAsync,
+  selectCartStatus,
   selectItems,
   updateCartAsync,
 } from "./cartSlice";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { discountedPrice } from "../../app/constants";
+import { RotatingSquare } from "react-loader-spinner";
 
 export default function Cart() {
   const dispatch = useDispatch();
+  const status = useSelector(selectCartStatus);
 
   const items = useSelector(selectItems);
   const totalAmount = items.reduce(
@@ -38,6 +41,19 @@ export default function Cart() {
               Cart
             </h1>
             <div className="flow-root">
+              {status === "loading" ? (
+                <RotatingSquare
+                  height="100"
+                  width="100"
+                  // color="#05A5D4"
+                  color="rgb(79, 70, 229)"
+                  ariaLabel="rotating-square-loading"
+                  strokeWidth="4"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              ) : null}
               <ul className="-my-6 divide-y divide-gray-200">
                 {items.map((item) => (
                   <li key={item.id} className="flex py-6">

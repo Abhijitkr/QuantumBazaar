@@ -2,12 +2,17 @@ import { useState, useEffect } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductByIdAsync, selectProductById } from "../productSlice";
+import {
+  fetchProductByIdAsync,
+  selectProductById,
+  selectProductListStatus,
+} from "../productSlice";
 import { useParams } from "react-router-dom";
 import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
 import { discountedPrice } from "../../../app/constants";
 import { useAlert } from "react-alert";
+import { RotatingSquare } from "react-loader-spinner";
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -49,6 +54,7 @@ export default function ProductDetail() {
   const dispatch = useDispatch();
   const params = useParams();
   const alert = useAlert();
+  const status = useSelector(selectProductListStatus);
 
   const handleCart = (e) => {
     e.preventDefault();
@@ -73,6 +79,19 @@ export default function ProductDetail() {
 
   return (
     <div className="bg-white">
+      {status === "loading" ? (
+        <RotatingSquare
+          height="100"
+          width="100"
+          // color="#05A5D4"
+          color="rgb(79, 70, 229)"
+          ariaLabel="rotating-square-loading"
+          strokeWidth="4"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      ) : null}
       {product && (
         <div className="pt-6">
           <nav aria-label="Breadcrumb">
