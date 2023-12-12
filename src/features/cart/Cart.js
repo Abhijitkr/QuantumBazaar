@@ -102,10 +102,10 @@ export default function Cart() {
                         <div className="flex">
                           <Modal
                             title={`Delete ${item.title}`}
-                            message="Are you sure you want to delete this cart item"
+                            message="Are you sure you want to delete this Cart item ?"
                             dangerOption="Delete"
                             cancelOption="Cancel"
-                            cancelAction={(e) => setOpenModal(-1)}
+                            cancelAction={(e) => setOpenModal(null)}
                             dangerAction={(e) => handleRemove(e, item.id)}
                             showModal={openModal === item.id}
                           ></Modal>
