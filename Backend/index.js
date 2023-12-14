@@ -1,10 +1,14 @@
 const express = require("express");
 const server = express();
 const mongoose = require("mongoose");
-const productsRouters = require("./routes/Products");
+const productsRouter = require("./routes/Products");
+const brandsRouter = require("./routes/Brands");
+const categoriesRouter = require("./routes/Categories");
 
 server.use(express.json());
-server.use("/products", productsRouters.router);
+server.use("/products", productsRouter.router);
+server.use("/brands", brandsRouter.router);
+server.use("/categories", categoriesRouter.router);
 
 main().catch((err) => console.log(err));
 
