@@ -4,11 +4,13 @@ const {
   createProduct,
   fetchAllProducts,
   fetchProductById,
+  updateProduct,
 } = require("../controller/Product");
 
 router
   .post("/", createProduct)
   .get("/", fetchAllProducts)
-  .get("/:id", fetchProductById);
+  .get("/:id", fetchProductById)
+  .patch("/:id", updateProduct);
 
 exports.router = router;
