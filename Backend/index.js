@@ -1,20 +1,24 @@
 const express = require("express");
 const server = express();
+const cors = require("cors");
 const mongoose = require("mongoose");
 const productsRouter = require("./routes/Products");
 const brandsRouter = require("./routes/Brands");
 const categoriesRouter = require("./routes/Categories");
-const cors = require("cors");
+const authRouter = require("./routes/Auth");
+const usersRouter = require("./routes/User");
 
-server.use(express.json());
 server.use(
   cors({
     exposedHeaders: ["X-Total-Count"],
   })
 );
+server.use(express.json());
 server.use("/products", productsRouter.router);
 server.use("/brands", brandsRouter.router);
 server.use("/categories", categoriesRouter.router);
+server.use("/users", usersRouter.router);
+server.use("/auth", authRouter.router);
 
 main().catch((err) => console.log(err));
 
