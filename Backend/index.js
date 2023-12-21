@@ -8,6 +8,7 @@ const categoriesRouter = require("./routes/Categories");
 const authRouter = require("./routes/Auth");
 const usersRouter = require("./routes/User");
 const cartsRouter = require("./routes/Cart");
+const orderRouter = require("./routes/Order");
 
 server.use(
   cors({
@@ -21,6 +22,7 @@ server.use("/categories", categoriesRouter.router);
 server.use("/users", usersRouter.router);
 server.use("/auth", authRouter.router);
 server.use("/cart", cartsRouter.router);
+server.use("/orders", orderRouter.router);
 
 main().catch((err) => console.log(err));
 
