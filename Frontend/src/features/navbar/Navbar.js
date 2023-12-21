@@ -43,7 +43,7 @@ function NavBar({ children }) {
                         <img
                           className="h-8 w-8"
                           src="/QBIcon.png"
-                          alt="Your Company"
+                          alt="Quantum Bazaar"
                         />
                       </Link>
                     </div>
@@ -181,6 +181,7 @@ function NavBar({ children }) {
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium leading-none text-white">
+                        {/* this should come from userInfo */}
                         {user.name}
                       </div>
                       <div className="text-sm font-medium leading-none text-gray-400">
@@ -225,7 +226,7 @@ function NavBar({ children }) {
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              Quantum Bazaar
+              E-Commerce
             </h1>
           </div>
         </header>

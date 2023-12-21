@@ -275,7 +275,7 @@ export default function UserProfile() {
 
           <p className="mt-0.5 text-sm text-gray-500">Your Addresses :</p>
           {userInfo.addresses.map((address, index) => (
-            <div key={userInfo.id}>
+            <div key={index}>
               {selectedEditIndex === index ? (
                 <form
                   className="bg-white px-5 py-12 mt-12"

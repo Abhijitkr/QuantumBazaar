@@ -15,8 +15,6 @@ export default function Signup() {
     formState: { errors },
   } = useForm();
 
-  console.log(errors);
-
   return (
     <>
       {user && <Navigate to="/" replace={true}></Navigate>}
@@ -25,7 +23,7 @@ export default function Signup() {
           <img
             className="mx-auto h-10 w-auto"
             src="/QBIcon.png"
-            alt="Your Company"
+            alt="Quantum Bazaar"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Create a New Account
@@ -43,6 +41,7 @@ export default function Signup() {
                   password: data.password,
                   addresses: [],
                   role: "user",
+                  //TODO: this role can be directly given on backend
                 })
               );
               console.log(data);

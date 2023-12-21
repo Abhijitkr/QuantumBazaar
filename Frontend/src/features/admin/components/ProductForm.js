@@ -14,21 +14,19 @@ import { useEffect, useState } from "react";
 import Modal from "../../common/Modal";
 
 function ProductForm() {
-  const brands = useSelector(selectBrands);
-  const categories = useSelector(selectCategories);
-  const dispatch = useDispatch();
-  const params = useParams();
-  const selectedProduct = useSelector(selectProductById);
-
-  const [openModal, setOpenModal] = useState(null);
-
   const {
     register,
     handleSubmit,
     setValue,
     reset,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
+  const brands = useSelector(selectBrands);
+  const categories = useSelector(selectCategories);
+  const dispatch = useDispatch();
+  const params = useParams();
+  const selectedProduct = useSelector(selectProductById);
+  const [openModal, setOpenModal] = useState(null);
 
   useEffect(() => {
     if (params.id) {
@@ -36,7 +34,7 @@ function ProductForm() {
     } else {
       dispatch(clearSelectedProduct());
     }
-  }, [dispatch, params.id]);
+  }, [params.id, dispatch]);
 
   useEffect(() => {
     if (selectedProduct && params.id) {
@@ -52,7 +50,7 @@ function ProductForm() {
       setValue("brand", selectedProduct.brand);
       setValue("category", selectedProduct.category);
     }
-  }, [dispatch, params.id, selectedProduct, setValue]);
+  }, [selectedProduct, params.id, setValue]);
 
   const handleDelete = () => {
     const product = { ...selectedProduct };
@@ -63,6 +61,7 @@ function ProductForm() {
   return (
     <>
       <form
+        noValidate
         onSubmit={handleSubmit((data) => {
           console.log(data);
           const product = { ...data };
@@ -77,9 +76,10 @@ function ProductForm() {
           delete product["image2"];
           delete product["image3"];
           product.price = +product.price;
-          product.discountPercentage = +product.discountPercentage;
           product.stock = +product.stock;
+          product.discountPercentage = +product.discountPercentage;
           console.log(product);
+
           if (params.id) {
             product.id = params.id;
             product.rating = selectedProduct.rating || 0;
@@ -88,6 +88,7 @@ function ProductForm() {
           } else {
             dispatch(createProductAsync(product));
             reset();
+            //TODO:  on product successfully added clear fields and show a message
           }
         })}
       >
@@ -99,11 +100,12 @@ function ProductForm() {
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               {selectedProduct.deleted && (
-                <h2 className="text-red-500 sm:col-span-full">
-                  This Product is Deleted
+                <h2 className="text-red-500 sm:col-span-6">
+                  This product is deleted
                 </h2>
               )}
-              <div className="sm:col-span-full">
+
+              <div className="sm:col-span-6">
                 <label
                   htmlFor="title"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -111,10 +113,12 @@ function ProductForm() {
                   Product Name
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                     <input
                       type="text"
-                      {...register("title", { required: "name is required" })}
+                      {...register("title", {
+                        required: "name is required",
+                      })}
                       id="title"
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                     />
@@ -147,7 +151,7 @@ function ProductForm() {
 
               <div className="col-span-full">
                 <label
-                  htmlFor="description"
+                  htmlFor="brand"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Brand
@@ -160,7 +164,9 @@ function ProductForm() {
                   >
                     <option value="">--choose brand--</option>
                     {brands.map((brand) => (
-                      <option value={brand.value}>{brand.label}</option>
+                      <option key={brand.value} value={brand.value}>
+                        {brand.label}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -168,7 +174,7 @@ function ProductForm() {
 
               <div className="col-span-full">
                 <label
-                  htmlFor="description"
+                  htmlFor="category"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Category
@@ -180,8 +186,10 @@ function ProductForm() {
                     })}
                   >
                     <option value="">--choose category--</option>
-                    {categories.map((catagory) => (
-                      <option value={catagory.value}>{catagory.label}</option>
+                    {categories.map((category) => (
+                      <option key={category.value} value={category.value}>
+                        {category.label}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -195,7 +203,7 @@ function ProductForm() {
                   Price
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                     <input
                       type="number"
                       {...register("price", {
@@ -218,9 +226,9 @@ function ProductForm() {
                   Discount Percentage
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                     <input
-                      type="text"
+                      type="number"
                       {...register("discountPercentage", {
                         required: "discountPercentage is required",
                         min: 0,
@@ -241,7 +249,7 @@ function ProductForm() {
                   Stock
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                     <input
                       type="number"
                       {...register("stock", {
@@ -255,7 +263,7 @@ function ProductForm() {
                 </div>
               </div>
 
-              <div className="sm:col-span-full">
+              <div className="sm:col-span-6">
                 <label
                   htmlFor="thumbnail"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -263,7 +271,7 @@ function ProductForm() {
                   Thumbnail
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                     <input
                       type="text"
                       {...register("thumbnail", {
@@ -276,7 +284,7 @@ function ProductForm() {
                 </div>
               </div>
 
-              <div className="sm:col-span-full">
+              <div className="sm:col-span-6">
                 <label
                   htmlFor="image1"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -284,7 +292,7 @@ function ProductForm() {
                   Image 1
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                     <input
                       type="text"
                       {...register("image1", {
@@ -297,7 +305,7 @@ function ProductForm() {
                 </div>
               </div>
 
-              <div className="sm:col-span-full">
+              <div className="sm:col-span-6">
                 <label
                   htmlFor="image2"
                   className="block text-sm font-medium leading-6 text-gray-900"
@@ -305,11 +313,11 @@ function ProductForm() {
                   Image 2
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                     <input
                       type="text"
                       {...register("image2", {
-                        required: "image2 is required",
+                        required: "image is required",
                       })}
                       id="image2"
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -318,19 +326,19 @@ function ProductForm() {
                 </div>
               </div>
 
-              <div className="sm:col-span-full">
+              <div className="sm:col-span-6">
                 <label
-                  htmlFor="image3"
+                  htmlFor="image2"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Image 3
                 </label>
                 <div className="mt-2">
-                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                  <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 ">
                     <input
                       type="text"
                       {...register("image3", {
-                        required: "image3 is required",
+                        required: "image is required",
                       })}
                       id="image3"
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
@@ -343,7 +351,7 @@ function ProductForm() {
 
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Extra
+              Extra{" "}
             </h2>
 
             <div className="mt-10 space-y-10">
@@ -441,6 +449,7 @@ function ProductForm() {
               Delete
             </button>
           )}
+
           <button
             type="submit"
             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -454,8 +463,8 @@ function ProductForm() {
         message="Are you sure you want to delete this Product ?"
         dangerOption="Delete"
         cancelOption="Cancel"
-        cancelAction={(e) => setOpenModal(null)}
         dangerAction={handleDelete}
+        cancelAction={() => setOpenModal(null)}
         showModal={openModal}
       ></Modal>
     </>

@@ -63,7 +63,7 @@ export default function UserOrders() {
                                 htmlFor="quantity"
                                 className="inline mr-5 text-sm font-medium leading-6 text-gray-900"
                               >
-                                Qty :{item.product.quantity}
+                                Qty :{item.quantity}
                               </label>
                             </div>
 

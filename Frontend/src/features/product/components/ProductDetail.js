@@ -12,7 +12,7 @@ import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
 import { discountedPrice } from "../../../app/constants";
 import { useAlert } from "react-alert";
-import { RotatingSquare } from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -59,15 +59,17 @@ export default function ProductDetail() {
   const handleCart = (e) => {
     e.preventDefault();
     if (items.findIndex((item) => item.product.id === product.id) < 0) {
+      console.log({ items, product });
       const newItem = {
         product: product.id,
         quantity: 1,
         user: user.id,
       };
       dispatch(addToCartAsync(newItem));
-      alert.success("Item Added to Cart");
+      // TODO: it will be based on server response of backend
+      alert.error("Item added to Cart");
     } else {
-      alert.error("Item Already Added");
+      alert.error("Item Already added");
     }
   };
 
@@ -78,13 +80,12 @@ export default function ProductDetail() {
   return (
     <div className="bg-white">
       {status === "loading" ? (
-        <RotatingSquare
-          height="100"
-          width="100"
-          // color="#05A5D4"
-          color="rgb(79, 70, 229)"
-          ariaLabel="rotating-square-loading"
-          strokeWidth="4"
+        <Grid
+          height="80"
+          width="80"
+          color="rgb(79, 70, 229) "
+          ariaLabel="grid-loading"
+          radius="12.5"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}

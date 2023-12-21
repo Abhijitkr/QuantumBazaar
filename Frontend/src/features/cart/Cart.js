@@ -9,15 +9,16 @@ import {
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { discountedPrice } from "../../app/constants";
-import { RotatingSquare } from "react-loader-spinner";
+import { Grid } from "react-loader-spinner";
 import Modal from "../common/Modal";
 
 export default function Cart() {
   const dispatch = useDispatch();
+
+  const items = useSelector(selectItems);
   const status = useSelector(selectCartStatus);
   const [openModal, setOpenModal] = useState(null);
 
-  const items = useSelector(selectItems);
   const totalAmount = items.reduce(
     (amount, item) => discountedPrice(item.product) * item.quantity + amount,
     0
@@ -44,13 +45,12 @@ export default function Cart() {
             </h1>
             <div className="flow-root">
               {status === "loading" ? (
-                <RotatingSquare
-                  height="100"
-                  width="100"
-                  // color="#05A5D4"
-                  color="rgb(79, 70, 229)"
-                  ariaLabel="rotating-square-loading"
-                  strokeWidth="4"
+                <Grid
+                  height="80"
+                  width="80"
+                  color="rgb(79, 70, 229) "
+                  ariaLabel="grid-loading"
+                  radius="12.5"
                   wrapperStyle={{}}
                   wrapperClass=""
                   visible={true}
@@ -107,12 +107,14 @@ export default function Cart() {
                             message="Are you sure you want to delete this Cart item ?"
                             dangerOption="Delete"
                             cancelOption="Cancel"
-                            cancelAction={(e) => setOpenModal(null)}
                             dangerAction={(e) => handleRemove(e, item.id)}
+                            cancelAction={() => setOpenModal(null)}
                             showModal={openModal === item.id}
                           ></Modal>
                           <button
-                            onClick={(e) => setOpenModal(item.id)}
+                            onClick={(e) => {
+                              setOpenModal(item.id);
+                            }}
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
                           >
