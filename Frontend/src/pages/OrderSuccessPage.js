@@ -12,7 +12,7 @@ function OrderSuccessPage() {
 
   useEffect(() => {
     dispatch(resetCartAsync(user.id));
-    dispatch(resetOrder);
+    dispatch(resetOrder());
   }, [dispatch, user]);
 
   return (
