@@ -17,7 +17,7 @@ const productSchema = new Schema({
   rating: {
     type: Number,
     min: [0, "wrong min rating"],
-    max: [5, "wrong max rating"],
+    max: [5, "wrong max price"],
     default: 0,
   },
   stock: { type: Number, min: [0, "wrong min stock"], default: 0 },
@@ -32,7 +32,6 @@ const virtual = productSchema.virtual("id");
 virtual.get(function () {
   return this._id;
 });
-
 productSchema.set("toJSON", {
   virtuals: true,
   versionKey: false,
