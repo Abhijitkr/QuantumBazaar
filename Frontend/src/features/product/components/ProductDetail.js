@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { discountedPrice } from "../../../app/constants";
 import { useAlert } from "react-alert";
-import { Grid } from "react-loader-spinner";
+import { RotatingSquare } from "react-loader-spinner";
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -77,12 +77,13 @@ export default function ProductDetail() {
   return (
     <div className="bg-white">
       {status === "loading" ? (
-        <Grid
-          height="80"
-          width="80"
-          color="rgb(79, 70, 229) "
-          ariaLabel="grid-loading"
-          radius="12.5"
+        <RotatingSquare
+          height="100"
+          width="100"
+          // color="#05A5D4"
+          color="rgb(79, 70, 229)"
+          ariaLabel="rotating-square-loading"
+          strokeWidth="4"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}

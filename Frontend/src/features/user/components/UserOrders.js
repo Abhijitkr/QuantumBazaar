@@ -6,7 +6,7 @@ import {
   selectUserOrders,
 } from "../userSlice";
 import { discountedPrice } from "../../../app/constants";
-import { Grid } from "react-loader-spinner";
+import { RotatingSquare } from "react-loader-spinner";
 
 export default function UserOrders() {
   const dispatch = useDispatch();
@@ -119,12 +119,13 @@ export default function UserOrders() {
           </div>
         ))}
       {status === "loading" ? (
-        <Grid
-          height="80"
-          width="80"
-          color="rgb(79, 70, 229) "
-          ariaLabel="grid-loading"
-          radius="12.5"
+        <RotatingSquare
+          height="100"
+          width="100"
+          // color="#05A5D4"
+          color="rgb(79, 70, 229)"
+          ariaLabel="rotating-square-loading"
+          strokeWidth="4"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}
