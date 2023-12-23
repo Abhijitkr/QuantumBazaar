@@ -60,7 +60,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://quantum-bazaar.vercel.app/order-success/${currentOrder.id}`,
+        return_url: `https://quantum-bazaar-abhijitkrs-projects.vercel.app/order-success/${currentOrder.id}`,
       },
     });
 
@@ -72,6 +72,8 @@ export default function CheckoutForm() {
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
+      console.log({ error });
+      console.log({ elements });
       setMessage("An unexpected error occurred.");
     }
 
