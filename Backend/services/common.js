@@ -13,7 +13,7 @@ exports.cookieExtractor = function (req) {
   if (req && req.cookies) {
     token = req.cookies["jwt"];
   }
-  token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODU5NDgzZjY2ZWE1NGIzOWQ2ZDQ1YSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwMzMxMTAxN30.WbbhWZRt-hSNyN2E-rFoIipsIbajrxWjs9ufiWz5Rw0";
+  // token =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODU5NDMxZjY2ZWE1NGIzOWQ2ZDQ1NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzAzMzM0ODI4fQ.IcCSUZd-wHEllL4DNLm_U1gfj8OH26gtK4CVRxkYPq0";
   return token;
 };
