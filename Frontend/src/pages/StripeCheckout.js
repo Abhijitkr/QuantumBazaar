@@ -24,16 +24,16 @@ export default function StripeCheckout() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        // description: "E-commerce",
-        // shipping: {
-        //   name: currentOrder.selectedAddress.name,
-        //   address: {
-        //     street: currentOrder.selectedAddress.street,
-        //     postal_code: currentOrder.selectedAddress.pinCode,
-        //     city: currentOrder.selectedAddress.city,
-        //     state: currentOrder.selectedAddress.state,
-        //   },
-        // },
+        description: "E-commerce",
+        shipping: {
+          name: currentOrder.selectedAddress.name,
+          address: {
+            street: currentOrder.selectedAddress.street,
+            postal_code: currentOrder.selectedAddress.pinCode,
+            city: currentOrder.selectedAddress.city,
+            state: currentOrder.selectedAddress.state,
+          },
+        },
         totalAmount: currentOrder.totalAmount,
         orderId: currentOrder.id,
       }),
