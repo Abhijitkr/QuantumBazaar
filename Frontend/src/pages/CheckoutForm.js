@@ -61,7 +61,7 @@ export default function CheckoutForm() {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url: `https://quantum-bazaar.vercel.app/order-success/${currentOrder.id}`,
-        // return_url: `http://localhost:3000/order-success/${currentOrder.id}`,
+        // return_url: `http://localhost:8080/order-success/${currentOrder.id}`,
       },
       // redirect: "if_required",
     });
@@ -78,7 +78,7 @@ export default function CheckoutForm() {
       setMessage("An unexpected error occurred.");
     }
     // } else
-    //   window.location.href = `http://localhost:3000/order-success/${currentOrder.id}`;
+    //   window.location.href = `http://:3000/order-success/${currentOrder.id}`;
 
     setIsLoading(false);
   };

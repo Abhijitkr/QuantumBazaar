@@ -9,7 +9,6 @@ const LocalStrategy = require("passport-local").Strategy;
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const JwtStrategy = require("passport-jwt").Strategy;
-const ExtractJwt = require("passport-jwt").ExtractJwt;
 const cookieParser = require("cookie-parser");
 const productsRouter = require("./routes/Products");
 const categoriesRouter = require("./routes/Categories");
@@ -99,6 +98,13 @@ server.use("/users", isAuth(), usersRouter.router);
 server.use("/auth", authRouter.router);
 server.use("/cart", isAuth(), cartRouter.router);
 server.use("/orders", isAuth(), ordersRouter.router);
+
+// server.use("/order-success/:orderId", isAuth(), (req, res) => {
+//   const { orderId } = req.params;
+//   res.redirect(`https://quantum-bazaar.vercel.app/order-success/${orderId}`);
+//   // res.redirect(`http://localhost:3000/order-success/${orderId}`);
+// });
+
 // this line we add to make react router work in case of other routes doesnt match
 server.get("*", (req, res) =>
   res.sendFile(path.resolve("build", "index.html"))
