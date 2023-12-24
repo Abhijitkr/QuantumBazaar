@@ -60,8 +60,10 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `https://quantum-bazaar-abhijitkrs-projects.vercel.app/order-success/${currentOrder.id}`,
+        return_url: `https://quantum-bazaar.vercel.app/order-success/${currentOrder.id}`,
+        // return_url: `http://localhost:3000/order-success/${currentOrder.id}`,
       },
+      // redirect: "if_required",
     });
 
     // This point will only be reached if there is an immediate error when
@@ -69,13 +71,14 @@ export default function CheckoutForm() {
     // your `return_url`. For some payment methods like iDEAL, your customer will
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
+    // if (error) {
     if (error.type === "card_error" || error.type === "validation_error") {
       setMessage(error.message);
     } else {
-      console.log({ error });
-      console.log({ elements });
       setMessage("An unexpected error occurred.");
     }
+    // } else
+    //   window.location.href = `http://localhost:3000/order-success/${currentOrder.id}`;
 
     setIsLoading(false);
   };
