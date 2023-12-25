@@ -52,6 +52,15 @@ exports.loginUser = async (req, res) => {
     .json({ id: user.id, role: user.role });
 };
 
+exports.logout = async (req, res) => {
+  res
+    .cookie("jwt", null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    })
+    .sendStatus(200);
+};
+
 exports.checkAuth = async (req, res) => {
   if (req.user) res.json(req.user);
   else res.sendStatus(401);
@@ -67,10 +76,8 @@ exports.resetPasswordRequest = async (req, res) => {
     await user.save();
 
     const resetPageLink =
-      "https://quantum-bazaar.vercel.app/reset-password?token=" +
-      token +
-      "&email=" +
-      email;
+      // "https://quantum-bazaar.vercel.app/reset-password?token=" +
+      "http://localhost:3000/reset-password?token=" + token + "&email=" + email;
     const subject = "Reset password for Quantum Bazaar";
     const html = `<p>
       Click <a href="${resetPageLink}">here</a> to Reset Password
@@ -90,7 +97,7 @@ exports.resetPassword = async (req, res) => {
   if (user) {
     const salt = crypto.randomBytes(16);
     crypto.pbkdf2(
-      req.body.password,
+      password,
       salt,
       310000,
       32,
