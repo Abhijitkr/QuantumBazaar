@@ -14,6 +14,38 @@ import { useEffect, useState } from "react";
 import Modal from "../../common/Modal";
 import { useAlert } from "react-alert";
 
+const colors = [
+  {
+    name: "White",
+    class: "bg-white",
+    selectedClass: "ring-gray-400",
+    id: "white",
+  },
+  {
+    name: "Gray",
+    class: "bg-gray-200",
+    selectedClass: "ring-gray-400",
+    id: "gray",
+  },
+  {
+    name: "Black",
+    class: "bg-gray-900",
+    selectedClass: "ring-gray-900",
+    id: "black",
+  },
+];
+
+const sizes = [
+  { name: "XXS", inStock: true, id: "xxs" },
+  { name: "XS", inStock: true, id: "xs" },
+  { name: "S", inStock: true, id: "s" },
+  { name: "M", inStock: true, id: "m" },
+  { name: "L", inStock: true, id: "l" },
+  { name: "XL", inStock: true, id: "xl" },
+  { name: "2XL", inStock: true, id: "2xl" },
+  { name: "3XL", inStock: true, id: "3xl" },
+];
+
 function ProductForm() {
   const {
     register,
@@ -64,7 +96,6 @@ function ProductForm() {
       <form
         noValidate
         onSubmit={handleSubmit((data) => {
-          console.log(data);
           const product = { ...data };
           product.images = [
             product.image1,
@@ -73,6 +104,12 @@ function ProductForm() {
             product.thumbnail,
           ];
           product.rating = 0;
+          product.colors = product.colors.map((color) =>
+            colors.find((clr) => clr.id === color)
+          );
+          product.sizes = product.sizes.map((size) =>
+            sizes.find((sz) => sz.id === size)
+          );
           delete product["image1"];
           delete product["image2"];
           delete product["image3"];
@@ -173,6 +210,52 @@ function ProductForm() {
                       </option>
                     ))}
                   </select>
+                </div>
+              </div>
+
+              <div className="col-span-full">
+                <label
+                  htmlFor="colors"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Colors
+                </label>
+                <div>
+                  {colors.map((color) => (
+                    <span className="mr-2">
+                      <input
+                        type="checkbox"
+                        key={color.id}
+                        {...register("colors")}
+                        value={color.id}
+                        className="mr-1"
+                      />
+                      {color.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="col-span-full">
+                <label
+                  htmlFor="sizes"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Sizes
+                </label>
+                <div className="mt-2">
+                  {sizes.map((size) => (
+                    <span className="mr-2">
+                      <input
+                        type="checkbox"
+                        key={size.id}
+                        {...register("sizes")}
+                        value={size.id}
+                        className="mr-1"
+                      />
+                      {size.name}
+                    </span>
+                  ))}
                 </div>
               </div>
 
