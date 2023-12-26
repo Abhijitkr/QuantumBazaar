@@ -76,8 +76,12 @@ exports.resetPasswordRequest = async (req, res) => {
     await user.save();
 
     const resetPageLink =
-      // "https://quantum-bazaar.vercel.app/reset-password?token=" +
-      "http://localhost:3000/reset-password?token=" + token + "&email=" + email;
+      "https://quantum-bazaar.vercel.app/reset-password?token=" +
+      token +
+      "&email=" +
+      email;
+    // "http://localhost:3000/reset-password?token=" + token + "&email=" + email;
+
     const subject = "Reset password for Quantum Bazaar";
     const html = `<p>
       Click <a href="${resetPageLink}">here</a> to Reset Password

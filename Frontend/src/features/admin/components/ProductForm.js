@@ -9,7 +9,7 @@ import {
   updateProductAsync,
 } from "../../product/productSlice";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Modal from "../../common/Modal";
 import { useAlert } from "react-alert";
@@ -611,13 +611,14 @@ function ProductForm() {
         </div>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
-          <button
-            //TODO: Cancel button not working
-            type="button"
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            Cancel
-          </button>
+          <Link to="/admin">
+            <button
+              type="button"
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              Cancel
+            </button>
+          </Link>
 
           {selectedProduct && !selectedProduct.deleted && (
             <button
