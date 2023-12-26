@@ -176,6 +176,7 @@ function App() {
   const userChecked = useSelector(selectUserChecked);
 
   useEffect(() => {
+    document.title = "Quantum Bazaar";
     dispatch(checkAuthAsync());
   }, []);
 

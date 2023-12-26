@@ -168,9 +168,9 @@ exports.invoiceTemplate = function (order) {
           <![endif]-->
           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
             <tr>
-              <td align="center" valign="top" style="padding: 36px 24px;">
+              <td align="center" valign="top" style="padding: 10px 10px;">
                 <a href="https://quantum-bazaar.onrender.com" target="_blank" style="display: inline-block;">
-                  <img src="./img/paste-logo-light@2x.png" alt="Logo" border="0" width="48" style="display: block; width: 48px; max-width: 48px; min-width: 48px;">
+                  <img src="https://github.com/Abhijitkr/QuantumBazaar/blob/main/Frontend/public/QBLogoNav.png?raw=true" alt="Logo" border="0" width="48" style="display: block; width: 48px; max-width: 100px; min-width: 300px;">
                 </a>
               </td>
             </tr>
@@ -265,7 +265,7 @@ exports.invoiceTemplate = function (order) {
                     <td align="left" width="20%" style="padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;"><strong>${
                       order.totalItems
                     }</strong></td>
-                    <td align="left" width="20%" style="padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;"><strong>$${
+                    <td align="left" width="20%" style="padding: 12px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-top: 2px dashed #D2C7BA; border-bottom: 2px dashed #D2C7BA;"><strong>$ ${
                       order.totalAmount
                     }</strong></td>
                   </tr>

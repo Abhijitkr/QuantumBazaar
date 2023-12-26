@@ -29,7 +29,7 @@ export default function AdminProductDetail() {
   const handleCart = (e) => {
     e.preventDefault();
     if (items.findIndex((item) => item.product.id === product.id) < 0) {
-      console.log({ items, product });
+      // console.log({ items, product });
       const newItem = {
         product: product.id,
         quantity: 1,

@@ -42,8 +42,8 @@ function NavBar({ children }) {
                       <div className="flex-shrink-0">
                         <Link to="/">
                           <img
-                            className="h-8 w-8"
-                            src="/QBIcon.png"
+                            className="h-10 w-15"
+                            src="/QBLogoNav.png"
                             alt="Quantum Bazaar"
                           />
                         </Link>
@@ -227,7 +227,7 @@ function NavBar({ children }) {
           <header className="bg-white shadow">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-                E-Commerce
+                Quantum Bazaar
               </h1>
             </div>
           </header>
