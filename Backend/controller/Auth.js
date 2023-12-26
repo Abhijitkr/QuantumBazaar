@@ -76,7 +76,7 @@ exports.resetPasswordRequest = async (req, res) => {
     await user.save();
 
     const resetPageLink =
-      "https://quantum-bazaar.vercel.app/reset-password?token=" +
+      "https://quantum-bazaar.onrender.com/reset-password?token=" +
       token +
       "&email=" +
       email;
