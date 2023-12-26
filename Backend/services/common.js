@@ -8,7 +8,6 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    // TODO: replace `user` and `pass` values from <https://forwardemail.net>
     user: "webstar600@gmail.com",
     pass: process.env.MAIL_PASSWORD,
   },
@@ -27,8 +26,7 @@ exports.cookieExtractor = function (req) {
   if (req && req.cookies) {
     token = req.cookies["jwt"];
   }
-  // token =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODU5NDMxZjY2ZWE1NGIzOWQ2ZDQ1NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzAzMzM0ODI4fQ.IcCSUZd-wHEllL4DNLm_U1gfj8OH26gtK4CVRxkYPq0";
+
   return token;
 };
 
@@ -239,21 +237,27 @@ exports.invoiceTemplate = function (order) {
                       order.id
                     }</strong></td>
                   </tr>
-                  ${order.items.map(
-                    (item) => `<tr>
+                  ${order.items
+                    .map(
+                      (item) => `<tr>
                   <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">${
                     item.product.title
                   }</td>
                   <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">${
                     item.quantity
                   }</td>
-                  <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">$${Math.round(
+
+                  <!--  <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">$${Math.round(
                     item.product.price *
-                      (1 - item.product.discountPercentage / 100),
-                    2
-                  )}</td>
+                      (1 - item.product.discountPercentage / 100)
+                  )}</td>  -->
+                  
+                  <td align="left" width="20%" style="padding: 6px 12px;font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">$
+                  ${item.product.discountedPrice}
+                  </td>
                 </tr>`
-                  )}
+                    )
+                    .join("")}
                   
                   
                   <tr>

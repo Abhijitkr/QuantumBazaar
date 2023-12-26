@@ -8,7 +8,6 @@ import {
 } from "../../product/productSlice";
 import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/cartSlice";
-import { discountedPrice } from "../../../app/constants";
 
 // TODO: In server data we will add colors, sizes , highlights. to each product
 
@@ -149,7 +148,7 @@ export default function AdminProductDetail() {
                 ${product.price}
               </p>
               <p className="text-3xl tracking-tight text-gray-900">
-                ${discountedPrice(product)}
+                ${product.discountedPrice}
               </p>
 
               {/* Reviews */}
