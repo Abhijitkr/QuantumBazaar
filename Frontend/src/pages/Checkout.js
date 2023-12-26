@@ -72,9 +72,6 @@ function Checkout() {
       // TODO : we can use proper messaging popup here
       alert("Enter Address and Payment method");
     }
-    //TODO : Redirect to order-success page
-    //TODO : clear cart after order
-    //TODO : on server change the stock number of items
   };
 
   return (

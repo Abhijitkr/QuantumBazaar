@@ -12,13 +12,9 @@ import { addToCartAsync, selectItems } from "../../cart/cartSlice";
 import { useAlert } from "react-alert";
 import { RotatingSquare } from "react-loader-spinner";
 
-// TODO: In server data we will add colors, sizes , highlights. to each product
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
-// TODO : Loading UI
 
 export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState();
@@ -41,7 +37,6 @@ export default function ProductDetail() {
       if (selectedColor) newItem.color = selectedColor;
       if (selectedSize) newItem.size = selectedSize;
       dispatch(addToCartAsync(newItem));
-      // TODO: it will be based on server response of backend
       alert.success("Item added to Cart");
     } else {
       alert.error("Item Already added");
