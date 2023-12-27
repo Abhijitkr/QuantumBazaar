@@ -154,22 +154,24 @@ function NavBar({ children }) {
 
                 <Disclosure.Panel className="md:hidden">
                   <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                    {navigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "block rounded-md px-3 py-2 text-base font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </Disclosure.Button>
-                    ))}
+                    {navigation.map((item) =>
+                      item[userInfo.role] ? (
+                        <Link
+                          key={item.name}
+                          // as="a"
+                          to={item.link}
+                          className={classNames(
+                            item.current
+                              ? "bg-gray-900 text-white"
+                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                            "block rounded-md px-3 py-2 text-base font-medium"
+                          )}
+                          aria-current={item.current ? "page" : undefined}
+                        >
+                          {item.name}
+                        </Link>
+                      ) : null
+                    )}
                   </div>
                   <div className="border-t border-gray-700 pb-3 pt-4">
                     <div className="flex items-center px-5">
@@ -189,7 +191,7 @@ function NavBar({ children }) {
                           {userInfo.email}
                         </div>
                       </div>
-                      <Link to="/cart">
+                      <Link to="/cart" className="ml-auto">
                         <button
                           type="button"
                           className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -208,14 +210,14 @@ function NavBar({ children }) {
                     </div>
                     <div className="mt-3 space-y-1 px-2">
                       {userNavigation.map((item) => (
-                        <Disclosure.Button
+                        <Link
                           key={item.name}
-                          as="a"
-                          href={item.href}
+                          // as="a"
+                          to={item.link}
                           className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                         >
                           {item.name}
-                        </Disclosure.Button>
+                        </Link>
                       ))}
                     </div>
                   </div>

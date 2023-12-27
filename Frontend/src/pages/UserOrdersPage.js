@@ -5,7 +5,9 @@ function UserOrdersPage() {
   return (
     <div>
       <NavBar>
-        <h1 className="text-2xl mx-auto">My orders</h1>
+        <h1 className="px-4 text-3xl mx-auto font-semibold tracking-tight text-gray-900 leading-7">
+          My orders
+        </h1>
         <UserOrders></UserOrders>
       </NavBar>
     </div>

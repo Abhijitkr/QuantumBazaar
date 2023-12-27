@@ -52,9 +52,9 @@ export default function UserProfile() {
 
   return (
     <div>
-      <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto mt-10 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-          <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
+          <h1 className="text-4xl my-5 font-semibold tracking-tight text-gray-900">
             Name: {userInfo.name ? userInfo.name : "New User"}
           </h1>
           <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
@@ -80,7 +80,7 @@ export default function UserProfile() {
           </button>
           {showAddAddressForm ? (
             <form
-              className="bg-white px-5 py-12 mt-12"
+              className="bg-white px-5 py-12"
               noValidate
               onSubmit={handleSubmit((data) => {
                 // console.log(data);
@@ -271,7 +271,7 @@ export default function UserProfile() {
             </form>
           ) : null}
 
-          <p className="mt-0.5 text-sm text-gray-500">Your Addresses :</p>
+          <p className="mt-5 text-sm text-gray-500">Your Addresses :</p>
           {userInfo.addresses.map((address, index) => (
             <div key={index}>
               {selectedEditIndex === index ? (

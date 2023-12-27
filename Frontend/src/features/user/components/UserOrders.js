@@ -22,9 +22,9 @@ export default function UserOrders() {
         orders.map((order) => (
           <div key={order.id}>
             <div>
-              <div className="mx-auto mt-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                  <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
+              <div className="mx-auto mt-10 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="overflow-x-auto border-t border-gray-200 px-4 py-6 sm:px-6">
+                  <h1 className="text-4xl my-5 font-semibold tracking-tight text-gray-900">
                     Order # {order.id}
                   </h1>
                   <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
@@ -80,7 +80,7 @@ export default function UserOrders() {
                 <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                   <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$ {order.totalAmount}</p>
+                    <p>${order.totalAmount}</p>
                   </div>
                   <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                     <p>Total Items in Cart</p>

@@ -487,7 +487,7 @@ function Checkout() {
                 <div className="border-t border-gray-200 px-2 py-6 sm:px-2">
                   <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$ {totalAmount}</p>
+                    <p>${totalAmount}</p>
                   </div>
                   <div className="flex justify-between my-2 text-base font-medium text-gray-900">
                     <p>Total Items in Cart</p>
