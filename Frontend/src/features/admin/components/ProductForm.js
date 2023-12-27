@@ -61,6 +61,7 @@ function ProductForm() {
   const selectedProduct = useSelector(selectProductById);
   const [openModal, setOpenModal] = useState(null);
   const alert = useAlert();
+
   useEffect(() => {
     if (params.id) {
       dispatch(fetchProductByIdAsync(params.id));
@@ -153,7 +154,7 @@ function ProductForm() {
         <div className="space-y-12 bg-white p-12">
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-3xl mx-auto font-semibold tracking-tight text-gray-900 leading-7">
-              Add Product
+              {params.id ? "Edit Product" : "Add Product"}
             </h2>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
@@ -239,10 +240,9 @@ function ProductForm() {
                 </label>
                 <div>
                   {colors.map((color) => (
-                    <span className="mr-2">
+                    <span className="mr-2" key={color.id}>
                       <input
                         type="checkbox"
-                        key={color.id}
                         {...register("colors")}
                         value={color.id}
                         className="mr-1"
@@ -262,10 +262,9 @@ function ProductForm() {
                 </label>
                 <div className="mt-2">
                   {sizes.map((size) => (
-                    <span className="mr-2">
+                    <span className="mr-2" key={size.id}>
                       <input
                         type="checkbox"
-                        key={size.id}
                         {...register("sizes")}
                         value={size.id}
                         className="mr-1"
@@ -626,6 +625,7 @@ function ProductForm() {
                 e.preventDefault();
                 setOpenModal(true);
               }}
+              type="button"
               className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Delete

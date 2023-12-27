@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUserInfo, updateUserAsync } from "../userSlice";
 import { useForm } from "react-hook-form";
+import Modal from "../../common/Modal";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
   const userInfo = useSelector(selectUserInfo);
   const [selectedEditIndex, setSelectedEditIndex] = useState(-1);
   const [showAddAddressForm, setShowAddAddressForm] = useState(false);
+  const [openModal, setOpenModal] = useState(null);
+  const [editStatus, setEditStatus] = useState(-1);
 
   const {
     register,
@@ -18,7 +21,11 @@ export default function UserProfile() {
   } = useForm();
 
   const handleEdit = (addressUpdate, index) => {
-    const newUser = { ...userInfo, addresses: [...userInfo.addresses] }; // for shallow copy issue
+    const newUser = {
+      ...userInfo,
+      addresses: [...userInfo.addresses],
+      name: addressUpdate.name,
+    }; // for shallow copy issue
     newUser.addresses.splice(index, 1, addressUpdate);
     dispatch(updateUserAsync(newUser));
     setSelectedEditIndex(-1);
@@ -27,9 +34,12 @@ export default function UserProfile() {
     const newUser = { ...userInfo, addresses: [...userInfo.addresses] }; // for shallow copy issue
     newUser.addresses.splice(index, 1);
     dispatch(updateUserAsync(newUser));
+    setEditStatus(-1);
   };
 
   const handleEditForm = (index) => {
+    setEditStatus(index);
+    setShowAddAddressForm(false);
     setSelectedEditIndex(index);
     const address = userInfo.addresses[index];
     setValue("name", address.name);
@@ -45,6 +55,7 @@ export default function UserProfile() {
     const newUser = {
       ...userInfo,
       addresses: [...userInfo.addresses, address],
+      name: address.name,
     };
     dispatch(updateUserAsync(newUser));
     setShowAddAddressForm(false);
@@ -72,6 +83,7 @@ export default function UserProfile() {
             onClick={(e) => {
               setShowAddAddressForm(true);
               setSelectedEditIndex(-1);
+              reset();
             }}
             type="submit"
             className="rounded-md my-5 bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -261,6 +273,13 @@ export default function UserProfile() {
 
                 <div className="mt-6 flex items-center justify-end gap-x-6">
                   <button
+                    onClick={(e) => setShowAddAddressForm(false)}
+                    type="button"
+                    className="rounded-md px-3 py-2 text-sm font-semibold text-grey shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Cancel
+                  </button>
+                  <button
                     type="submit"
                     className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
@@ -276,12 +295,13 @@ export default function UserProfile() {
             <div key={index}>
               {selectedEditIndex === index ? (
                 <form
-                  className="bg-white px-5 py-12 mt-12"
+                  className="bg-white px-5 py-12"
                   noValidate
                   onSubmit={handleSubmit((data) => {
                     // console.log(data);
                     handleEdit(data, index);
                     reset();
+                    setEditStatus(-1);
                   })}
                 >
                   <div className="space-y-12">
@@ -467,8 +487,11 @@ export default function UserProfile() {
 
                     <div className="mt-6 flex items-center justify-end gap-x-6">
                       <button
-                        onClick={(e) => setSelectedEditIndex(-1)}
-                        type="submit"
+                        onClick={(e) => {
+                          setSelectedEditIndex(-1);
+                          setEditStatus(-1);
+                        }}
+                        type="button"
                         className="rounded-md px-3 py-2 text-sm font-semibold text-grey shadow-sm hover:bg-grey-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                       >
                         Cancel
@@ -483,9 +506,13 @@ export default function UserProfile() {
                   </div>
                 </form>
               ) : null}
-              <div className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200">
+
+              <div className="flex justify-between gap-x-6 px-5 py-5 mt-2 border-solid border-2 border-gray-200">
                 <div className="flex gap-x-4">
                   <div className="min-w-0 flex-auto">
+                    {editStatus === index && (
+                      <p className="text-red-500">Editing...</p>
+                    )}
                     <p className="text-sm font-semibold leading-6 text-gray-900">
                       {address.name}
                     </p>
@@ -513,8 +540,17 @@ export default function UserProfile() {
                   >
                     Edit
                   </button>
+                  <Modal
+                    title={"Delete Address"}
+                    message="Are you sure you want to delete this Address ?"
+                    dangerOption="Delete"
+                    cancelOption="Cancel"
+                    dangerAction={(e) => handleRemove(e, index)}
+                    cancelAction={() => setOpenModal(null)}
+                    showModal={openModal === index}
+                  ></Modal>
                   <button
-                    onClick={(e) => handleRemove(e, index)}
+                    onClick={(e) => setOpenModal(index)}
                     type="button"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
