@@ -111,8 +111,8 @@ export default function Login() {
             <div>
               <button
                 type="button"
-                style={{ backgroundColor: "#3498db" }}
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                // style={{ backgroundColor: "#3498db" }}
+                className="flex w-full justify-center rounded-md bg-blue-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                 onClick={() => {
                   dispatch(
                     loginUserAsync({
@@ -122,7 +122,22 @@ export default function Login() {
                   );
                 }}
               >
-                Guest Login
+                Guest User Login
+              </button>
+              <button
+                type="button"
+                // style={{ backgroundColor: "#D7403A" }}
+                className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 mt-5"
+                onClick={() => {
+                  dispatch(
+                    loginUserAsync({
+                      email: "admin@gmail.com",
+                      password: "Admin@123",
+                    })
+                  );
+                }}
+              >
+                Guest Admin Login
               </button>
             </div>
           </form>

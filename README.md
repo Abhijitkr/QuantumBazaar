@@ -88,11 +88,11 @@ Quantum Bazaar is an eCommerce platform built using the MERN stack (MongoDB, Exp
 
 ## APIs
 
-- **Authentication API**: `/api/auth`
-- **Product API**: `/api/products`
-- **Cart API**: `/api/cart`
-- **Order API**: `/api/order`
-- **User API**: `/api/user`
+- **Authentication API**: `/auth`
+- **Product API**: `/products`
+- **Cart API**: `/cart`
+- **Order API**: `/order`
+- **User API**: `/user`
 <!-- - **Payment API**: `/api/payment` -->
 
 ## Database Schema
