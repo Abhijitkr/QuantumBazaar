@@ -51,7 +51,7 @@ export default function StripeCheckout() {
   };
 
   return (
-    <div className="Stripe">
+    <div className="Stripe flex justify-center">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
